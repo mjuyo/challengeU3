@@ -30,8 +30,11 @@ total_products = Product.count
 puts "The total number of products: #{total_products}"
 
     # The names of all products above $10 with names that begin with the letter C.
-products_above_10_letter_c = Product.where('price > 10 AND name LIKE "C%"')
-puts "Products above $10 with names starting with C: #{products_above_10_letter_c}"
+products_above_10_letter_c = Product.where('price > 10 AND name LIKE "C%"') 
+puts "Products above $10 with names starting with C: "
+products_above_10_letter_c.each do |product|
+    puts " #{product.name} is $#{product.price}."
+end
 
     # Total number of products with a low stock quantity. (Low is defined as less than 5 in stock.)
 total_products_low_stock = Product.where('stock_quantity < 5').count
